@@ -30,31 +30,38 @@ namespace dominion {
     public:
         /// カードタイプ
         enum Type {
-            TYPE_TREASURE       = 0x1 << 0,        //財宝
-            TYPE_VICTORY_POINT  = 0x1 << 1,        //勝利点
-            TYPE_INVALID        = 0x0,
+            TYPE_TREASURE,        //財宝
+            TYPE_VICTORY_POINT,   //勝利点
+            TYPE_MAX,
+            TYPE_INVALID,
             FORCE_DWORD         = 0xFFFFFFFF
         };
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        CardEffect(Type type) : mType(type) {}
+        CardEffect(int typeField) : mTypeFlag(typeField) {}
         //---------------------------------------------------------------------
         /// @brief 仮想デストラクタ
         //---------------------------------------------------------------------
         virtual ~CardEffect(void) {}
         //---------------------------------------------------------------------
-        /// @brief タイプの取得
-        /// @return タイプ
+        /// @brief このタイプですか？
+        /// @return true:はい　false:いいえ
         //---------------------------------------------------------------------
-        Type getType(void) const { return mType; }
+        bool isThisType(Type type) const;
         //---------------------------------------------------------------------
         /// @brief 文字列表現の取得
         /// @return 文字列表現
         //---------------------------------------------------------------------
         virtual std::string toString(void) const;
+        //---------------------------------------------------------------------
+        /// @brief タイプからタイプフィールドを取得します
+        /// @param type 元となるタイプ
+        /// @return タイプフィールド
+        //---------------------------------------------------------------------
+        static int getTypeField(Type type) const;
     private:
-        Type mType;
+        int mTypeField;
     };
 }
 #endif
