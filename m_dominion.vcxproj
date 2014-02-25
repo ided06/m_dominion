@@ -79,6 +79,7 @@
   <ItemGroup>
     <ClCompile Include="src\BasicTreasureEffect.cpp" />
     <ClCompile Include="src\CardEffect.cpp" />
+    <ClCompile Include="src\CardFactory.cpp" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

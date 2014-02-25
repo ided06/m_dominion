@@ -1,6 +1,6 @@
 //=============================================================================
-/// @class CardEffect.h
-/// @brief カードの中身
+/// @class CardFactory
+/// @brief カードファクトリー　カードの生成を少し隠す
 /// @author ide
 /// @since 14/02/20
 /// @version $Revision$
@@ -16,58 +16,48 @@
 // @defgroup 
 // @ingroup 
 //=============================================================================
-#ifndef DOMINION_CARD_EFFECT_H
-#define DOMINION_CARD_EFFECT_H
+#ifndef DOMINION_CARD_FACTORY_H
+#define DOMINION_CARD_FACTORY_H
 //-----------------------------------------------------------------------------
 // include files
 //-----------------------------------------------------------------------------
-#include <string>
+#include "dominion/Card.h"
+#include <map>
 //-----------------------------------------------------------------------------
 // class
 //-----------------------------------------------------------------------------
 namespace dominion {
-    class CardEffect {
+    class CardFactory {
     public:
-        /// カード属性
-        enum Attribute {
-            ATTRIBUTE_TREASURE,        //財宝
-            ATTRIBUTE_VICTORY_POINT,   //勝利点
-            ATTRIBUTE_MAX,
-            ATTRIBUTE_INVALID,
-            FORCE_DWORD         = 0xFFFFFFFF
-        };
         //---------------------------------------------------------------------
-        /// @brief コンストラクタ
+        /// @brief インスタンスの生成
+        /// @return true:成功 false:失敗
         //---------------------------------------------------------------------
-        CardEffect(const char *name, int attributeField) : mName(name), mAttributeField(attributeField) {}
+        static void createInstance(void);
         //---------------------------------------------------------------------
-        /// @brief 仮想デストラクタ
+        /// @brief インスタンスの削除
         //---------------------------------------------------------------------
-        virtual ~CardEffect(void) {}
+        static void deleteInstance(void);
         //---------------------------------------------------------------------
-        /// @brief この属性を持っていますか？
-        /// @return true:はい　false:いいえ
+        /// @brief インスタンスの取得
+        /// @return インスタンス
         //---------------------------------------------------------------------
-        bool hasThisAttribute(Attribute attribute) const;
+        static CardFactory *getInstance(void);
         //---------------------------------------------------------------------
-        /// @brief 文字列表現の取得
-        /// @return 文字列表現
+        /// @brief カードの作成
+        /// @param cardName カード名
+        /// @return カードのポインタ　失敗するとNULL
         //---------------------------------------------------------------------
-        virtual std::string toString(void) const;
+        Card *createCard(const char *cardEffectName);
         //---------------------------------------------------------------------
-        /// @brief 与えられた属性のみを含む属性フィールドを返す
-        /// @param attribute 元となる属性
-        /// @return 属性フィールド
+        /// @brief カード効果の追加
+        /// @param cardEffect カード効果
         //---------------------------------------------------------------------
-        static int getAttributeField(Attribute attribute);
-        //---------------------------------------------------------------------
-        /// @brief 名前の取得
-        /// @return 名前
-        //---------------------------------------------------------------------
-        const char *getName(void) const { return mName.c_str(); }
-    protected:
-        std::string mName;
-        int mAttributeField;
+        void addCardEffect(CardEffect *cardEffect);
+    private:
+        CardFactory(void);
+        ~CardFactory(void);
+        std::map <std::string, CardEffect *> mEffects;
     };
 }
 #endif

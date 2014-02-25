@@ -1,12 +1,17 @@
 #include <stdio.h>
 #include "dominion/BasicTreasureEffect.h"
+#include "dominion/CardFactory.h"
 
 using namespace dominion;
 
 void test(void) {
-    BasicTreasureEffect bte("capper", 1);
-    std::string str = bte.toString();
-    printf("%s\n", str.c_str());
+    BasicTreasureEffect capper("capper", 1);
+    CardFactory::createInstance();
+    CardFactory *factory = CardFactory::getInstance();
+    factory->addCardEffect(&capper);
+    Card *card = factory->createCard("capper");
+    std::string str = card->getCardEffect()->toString();
+    printf("%s", str.c_str());
 }
 
 
