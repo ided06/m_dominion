@@ -1,6 +1,6 @@
 //=============================================================================
-/// @class Card.h
-/// @brief カード
+/// @class CardEffect.h
+/// @brief カードの中身
 /// @author ide
 /// @since 14/02/20
 /// @version $Revision$
@@ -28,40 +28,40 @@
 namespace dominion {
     class CardEffect {
     public:
-        /// カードタイプ
-        enum Type {
-            TYPE_TREASURE,        //財宝
-            TYPE_VICTORY_POINT,   //勝利点
-            TYPE_MAX,
-            TYPE_INVALID,
+        /// カード属性
+        enum Attribute {
+            ATTRIBUTE_TREASURE,        //財宝
+            ATTRIBUTE_VICTORY_POINT,   //勝利点
+            ATTRIBUTE_MAX,
+            ATTRIBUTE_INVALID,
             FORCE_DWORD         = 0xFFFFFFFF
         };
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        CardEffect(int typeField) : mTypeFlag(typeField) {}
+        CardEffect(int attributeField) : mAttributeField(attributeField) {}
         //---------------------------------------------------------------------
         /// @brief 仮想デストラクタ
         //---------------------------------------------------------------------
         virtual ~CardEffect(void) {}
         //---------------------------------------------------------------------
-        /// @brief このタイプですか？
+        /// @brief この属性を持っていますか？
         /// @return true:はい　false:いいえ
         //---------------------------------------------------------------------
-        bool isThisType(Type type) const;
+        bool hasThisAttribute(Attribute attribute) const;
         //---------------------------------------------------------------------
         /// @brief 文字列表現の取得
         /// @return 文字列表現
         //---------------------------------------------------------------------
         virtual std::string toString(void) const;
         //---------------------------------------------------------------------
-        /// @brief タイプからタイプフィールドを取得します
-        /// @param type 元となるタイプ
-        /// @return タイプフィールド
+        /// @brief 与えられた属性のみを含む属性フィールドを返す
+        /// @param attribute 元となる属性
+        /// @return 属性フィールド
         //---------------------------------------------------------------------
-        static int getTypeField(Type type) const;
+        static int getAttributeField(Attribute attribute);
     private:
-        int mTypeField;
+        int mAttributeField;
     };
 }
 #endif

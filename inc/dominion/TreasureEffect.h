@@ -1,6 +1,6 @@
 //=============================================================================
-/// @class Treasure
-/// @brief 財宝カード
+/// @class TreasureEffect
+/// @brief 財宝カードの中身
 /// @author ide
 /// @since 14/02/20
 /// @version $Revision$
@@ -16,22 +16,22 @@
 // @defgroup 
 // @ingroup 
 //=============================================================================
-#ifndef DOMINION_TREASURE_H
-#define DOMINION_TREASURE_H
+#ifndef DOMINION_TREASURE_EFFECT_H
+#define DOMINION_TREASURE_EFFECT_H
 //-----------------------------------------------------------------------------
 // include files
 //-----------------------------------------------------------------------------
-#include "dominion/Card.h"
+#include "dominion/CardEffect.h"
 //-----------------------------------------------------------------------------
 // class
 //-----------------------------------------------------------------------------
 namespace dominion {
-    class Treasure : public Card {
+    class TreasureEffect : public CardEffect {
     public:
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        Treasure(void) : Card(Card::TYPE_TREASURE) {}
+        TreasureEffect(void) : CardEffect(CardEffect::getAttributeField(CardEffect::ATTRIBUTE_TREASURE)) {}
         //---------------------------------------------------------------------
         /// @brief 価値の取得
         /// @return 価値

@@ -1,6 +1,6 @@
 //=============================================================================
-/// @class BasicTreasure
-/// @brief 何の効果もない財宝カード（銅貨、銀貨、金貨）
+/// @class BasicTreasureEffect
+/// @brief 何の効果もない財宝カード（銅貨、銀貨、金貨）の効果
 /// @author ide
 /// @since 14/02/20
 /// @version $Revision$
@@ -16,21 +16,22 @@
 // @defgroup 
 // @ingroup 
 //=============================================================================
-#ifndef DOMINION_BASIC_TREASURE_H
-#define DOMINION_BASIC_TREASURE_H
+#ifndef DOMINION_BASIC_TREASURE_EFFECT_H
+#define DOMINION_BASIC_TREASURE_EFFECT_H
 //-----------------------------------------------------------------------------
 // include files
 //-----------------------------------------------------------------------------
-#include "dominion/Treasure.h"
+#include "dominion/TreasureEffect.h"
 //-----------------------------------------------------------------------------
 // class
 //-----------------------------------------------------------------------------
 namespace dominion {
-    class BasicTreasure : public Treasure {
+    class BasicTreasureEffect : public TreasureEffect {
+    public:
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        BasicTreasure(const char *name, int value) : mName(name), mValue(value) {}
+        BasicTreasureEffect(const char *name, int value) : mName(name), mValue(value) {}
         //---------------------------------------------------------------------
         /// @brief 価値の取得
         /// @return 価値
@@ -40,7 +41,10 @@ namespace dominion {
         /// @brief 文字列表現の取得
         /// @return 文字列表現
         //---------------------------------------------------------------------
-        const char *toString(void) const;
+        std::string toString(void) const;
+    private:
+        std::string mName;
+        int mValue;
     };
 }
 #endif
