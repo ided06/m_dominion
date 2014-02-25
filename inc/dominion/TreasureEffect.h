@@ -31,7 +31,7 @@ namespace dominion {
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        TreasureEffect(void) : CardEffect(CardEffect::getAttributeField(CardEffect::ATTRIBUTE_TREASURE)) {}
+        TreasureEffect(const char *name) : CardEffect(name, CardEffect::getAttributeField(CardEffect::ATTRIBUTE_TREASURE)) {}
         //---------------------------------------------------------------------
         /// @brief 価値の取得
         /// @return 価値

@@ -39,7 +39,7 @@ namespace dominion {
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        CardEffect(int attributeField) : mAttributeField(attributeField) {}
+        CardEffect(const char *name, int attributeField) : mName(name), mAttributeField(attributeField) {}
         //---------------------------------------------------------------------
         /// @brief 仮想デストラクタ
         //---------------------------------------------------------------------
@@ -60,7 +60,8 @@ namespace dominion {
         /// @return 属性フィールド
         //---------------------------------------------------------------------
         static int getAttributeField(Attribute attribute);
-    private:
+    protected:
+        std::string mName;
         int mAttributeField;
     };
 }

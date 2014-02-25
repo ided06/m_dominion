@@ -31,7 +31,7 @@ namespace dominion {
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        BasicTreasureEffect(const char *name, int value) : mName(name), mValue(value) {}
+        BasicTreasureEffect(const char *name, int value) : TreasureEffect(name), mValue(value) {}
         //---------------------------------------------------------------------
         /// @brief 価値の取得
         /// @return 価値
@@ -43,7 +43,6 @@ namespace dominion {
         //---------------------------------------------------------------------
         std::string toString(void) const;
     private:
-        std::string mName;
         int mValue;
     };
 }
