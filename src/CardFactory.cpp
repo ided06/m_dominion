@@ -44,9 +44,9 @@ namespace dominion {
     //-----------------------------------------------------------------------------
     // カードの作成
     //-----------------------------------------------------------------------------
-    Card *CardFactory::createCard(const char *cardEffectName) {
-        std::map <std::string, CardEffect *>::iterator it = mEffects.find(cardEffectName);
-        if(it == mEffects.end()) {
+    Card *CardFactory::createCard(const char *cardMasterName) {
+        std::map <std::string, CardMaster *>::iterator it = mMasters.find(cardMasterName);
+        if(it == mMasters.end()) {
             return NULL;
         }
         // このカード効果を参照するカードを作成
@@ -56,9 +56,9 @@ namespace dominion {
     //-----------------------------------------------------------------------------
     // カード効果の追加
     //-----------------------------------------------------------------------------
-    void CardFactory::addCardEffect(CardEffect *cardEffect) {
-        if(cardEffect == NULL) return;
-        mEffects.insert(std::make_pair(cardEffect->getName(), cardEffect));
+    void CardFactory::addCardMaster(CardMaster *cardMaster) {
+        if(cardMaster == NULL) return;
+        mMasters.insert(std::make_pair(cardMaster->getName(), cardMaster));
     }
     
 }

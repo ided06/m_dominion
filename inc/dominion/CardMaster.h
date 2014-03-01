@@ -1,5 +1,5 @@
 //=============================================================================
-/// @class CardEffect.h
+/// @class CardMaster.h
 /// @brief カードの中身
 /// @author ide
 /// @since 14/02/20
@@ -16,8 +16,8 @@
 // @defgroup 
 // @ingroup 
 //=============================================================================
-#ifndef DOMINION_CARD_EFFECT_H
-#define DOMINION_CARD_EFFECT_H
+#ifndef DOMINION_CARD_MASTER_H
+#define DOMINION_CARD_MASTER_H
 //-----------------------------------------------------------------------------
 // include files
 //-----------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 // class
 //-----------------------------------------------------------------------------
 namespace dominion {
-    class CardEffect {
+    class CardMaster {
     public:
         /// カード属性
         enum Attribute {
@@ -39,11 +39,11 @@ namespace dominion {
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        CardEffect(const char *name, int attributeField) : mName(name), mAttributeField(attributeField) {}
+        CardMaster(const char *name, int attributeField) : mName(name), mAttributeField(attributeField) {}
         //---------------------------------------------------------------------
         /// @brief 仮想デストラクタ
         //---------------------------------------------------------------------
-        virtual ~CardEffect(void) {}
+        virtual ~CardMaster(void) {}
         //---------------------------------------------------------------------
         /// @brief この属性を持っていますか？
         /// @return true:はい　false:いいえ

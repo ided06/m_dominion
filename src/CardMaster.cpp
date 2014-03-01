@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------
-// CardEffect.cpp
+// CardMaster.cpp
 //-----------------------------------------------------------------------------
 //-----------------------------------------------------------------------------
 // include files
 //-----------------------------------------------------------------------------
-#include "dominion/CardEffect.h"
+#include "dominion/CardMaster.h"
 //-----------------------------------------------------------------------------
 // class methods
 //-----------------------------------------------------------------------------
@@ -12,7 +12,7 @@ namespace dominion {
     //-----------------------------------------------------------------------------
     // 文字列表現の取得
     //-----------------------------------------------------------------------------
-    std::string CardEffect::toString(void) const {
+    std::string CardMaster::toString(void) const {
         // アトリビュートを示す文字列を生成
         std::string attrStr = "[";
         bool isFirst = true;
@@ -35,13 +35,13 @@ namespace dominion {
     //-----------------------------------------------------------------------------
     // この属性を含みますか？
     //-----------------------------------------------------------------------------
-    bool CardEffect::hasThisAttribute(Attribute attribute) const {
+    bool CardMaster::hasThisAttribute(Attribute attribute) const {
         return (getAttributeField(attribute) & mAttributeField) != 0;
     }
     //-----------------------------------------------------------------------------
     // 与えられた属性のみを含む属性フィールドを返す
     //-----------------------------------------------------------------------------
-    int CardEffect::getAttributeField(Attribute attribute) {
+    int CardMaster::getAttributeField(Attribute attribute) {
         return 0x1 << attribute;
     }
 }

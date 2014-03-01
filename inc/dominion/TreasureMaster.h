@@ -1,6 +1,6 @@
 //=============================================================================
-/// @class BasicTreasureEffect
-/// @brief 何の効果もない財宝カード（銅貨、銀貨、金貨）の効果
+/// @class TreasureMaster
+/// @brief 財宝カードの中身
 /// @author ide
 /// @since 14/02/20
 /// @version $Revision$
@@ -16,34 +16,28 @@
 // @defgroup 
 // @ingroup 
 //=============================================================================
-#ifndef DOMINION_BASIC_TREASURE_EFFECT_H
-#define DOMINION_BASIC_TREASURE_EFFECT_H
+#ifndef DOMINION_TREASURE_MASTER_H
+#define DOMINION_TREASURE_MASTER_H
 //-----------------------------------------------------------------------------
 // include files
 //-----------------------------------------------------------------------------
-#include "dominion/TreasureEffect.h"
+#include "dominion/CardMaster.h"
 //-----------------------------------------------------------------------------
 // class
 //-----------------------------------------------------------------------------
 namespace dominion {
-    class BasicTreasureEffect : public TreasureEffect {
+    class TreasureMaster : public CardMaster {
     public:
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        BasicTreasureEffect(const char *name, int value) : TreasureEffect(name), mValue(value) {}
+        TreasureMaster(const char *name) : CardMaster(name, CardMaster::getAttributeField(CardMaster::ATTRIBUTE_TREASURE)) {}
         //---------------------------------------------------------------------
         /// @brief 価値の取得
         /// @return 価値
         //---------------------------------------------------------------------
-        int getValue(void) const { return mValue; }
-        //---------------------------------------------------------------------
-        /// @brief 文字列表現の取得
-        /// @return 文字列表現
-        //---------------------------------------------------------------------
-        std::string toString(void) const;
+        virtual int getValue(void) const = 0;
     private:
-        int mValue;
     };
 }
 #endif

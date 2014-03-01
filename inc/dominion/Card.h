@@ -1,8 +1,8 @@
 //=============================================================================
-/// @class TreasureEffect
-/// @brief 財宝カードの中身
+/// @class Card
+/// @brief カードですお
 /// @author ide
-/// @since 14/02/20
+/// @since 14/02/25
 /// @version $Revision$
 /// 最終更新者 : $Author$<BR>
 /// 
@@ -16,28 +16,30 @@
 // @defgroup 
 // @ingroup 
 //=============================================================================
-#ifndef DOMINION_TREASURE_EFFECT_H
-#define DOMINION_TREASURE_EFFECT_H
+#ifndef DOMINION_CARD_H
+#define DOMINION_CARD_H
 //-----------------------------------------------------------------------------
 // include files
 //-----------------------------------------------------------------------------
-#include "dominion/CardEffect.h"
+#include "dominion/CardMaster.h"
 //-----------------------------------------------------------------------------
 // class
 //-----------------------------------------------------------------------------
 namespace dominion {
-    class TreasureEffect : public CardEffect {
+    class Card {
     public:
         //---------------------------------------------------------------------
         /// @brief コンストラクタ
+        /// @param cardMaster カード効果
         //---------------------------------------------------------------------
-        TreasureEffect(const char *name) : CardEffect(name, CardEffect::getAttributeField(CardEffect::ATTRIBUTE_TREASURE)) {}
+        Card(CardMaster *cardMaster) : mCardMaster(cardMaster) {}
         //---------------------------------------------------------------------
-        /// @brief 価値の取得
-        /// @return 価値
+        /// @brief カード効果クラスの取得
+        /// @return カード効果クラス
         //---------------------------------------------------------------------
-        virtual int getValue(void) const = 0;
+        CardMaster *getCardMaster() { return mCardMaster; }
     private:
+        CardMaster *mCardMaster;
     };
 }
 #endif

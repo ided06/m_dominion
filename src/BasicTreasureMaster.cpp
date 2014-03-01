@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------
-// BasicTreasureEffect.cpp
+// BasicTreasureMaster.cpp
 //-----------------------------------------------------------------------------
-#include "dominion/BasicTreasureEffect.h"
+#include "dominion/BasicTreasureMaster.h"
 //-----------------------------------------------------------------------------
 // class methods
 //-----------------------------------------------------------------------------
@@ -9,10 +9,10 @@ namespace dominion {
     //-----------------------------------------------------------------------------
     // •¶Žš—ñ•\Œ»‚ÌŽæ“¾
     //-----------------------------------------------------------------------------
-    std::string BasicTreasureEffect::toString(void) const {
+    std::string BasicTreasureMaster::toString(void) const {
         char buff[8];
         sprintf(buff, "%d", mValue);
-        std::string str = TreasureEffect::toString();
+        std::string str = TreasureMaster::toString();
         str += mName+"(val:"+buff+")";
         return str;
     }

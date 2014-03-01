@@ -1,6 +1,6 @@
 //=============================================================================
-/// @class CardFactory
-/// @brief カードファクトリー　カードの生成を少し隠す
+/// @class BasicTreasureMaster
+/// @brief 何の効果もない財宝カード（銅貨、銀貨、金貨）の効果
 /// @author ide
 /// @since 14/02/20
 /// @version $Revision$
@@ -16,48 +16,34 @@
 // @defgroup 
 // @ingroup 
 //=============================================================================
-#ifndef DOMINION_CARD_FACTORY_H
-#define DOMINION_CARD_FACTORY_H
+#ifndef DOMINION_BASIC_TREASURE_MASTER_H
+#define DOMINION_BASIC_TREASURE_MASTER_H
 //-----------------------------------------------------------------------------
 // include files
 //-----------------------------------------------------------------------------
-#include "dominion/Card.h"
-#include <map>
+#include "dominion/TreasureMaster.h"
 //-----------------------------------------------------------------------------
 // class
 //-----------------------------------------------------------------------------
 namespace dominion {
-    class CardFactory {
+    class BasicTreasureMaster : public TreasureMaster {
     public:
         //---------------------------------------------------------------------
-        /// @brief インスタンスの生成
-        /// @return true:成功 false:失敗
+        /// @brief コンストラクタ
         //---------------------------------------------------------------------
-        static void createInstance(void);
+        BasicTreasureMaster(const char *name, int value) : TreasureMaster(name), mValue(value) {}
         //---------------------------------------------------------------------
-        /// @brief インスタンスの削除
+        /// @brief 価値の取得
+        /// @return 価値
         //---------------------------------------------------------------------
-        static void deleteInstance(void);
+        int getValue(void) const { return mValue; }
         //---------------------------------------------------------------------
-        /// @brief インスタンスの取得
-        /// @return インスタンス
+        /// @brief 文字列表現の取得
+        /// @return 文字列表現
         //---------------------------------------------------------------------
-        static CardFactory *getInstance(void);
-        //---------------------------------------------------------------------
-        /// @brief カードの作成
-        /// @param cardName カード名
-        /// @return カードのポインタ　失敗するとNULL
-        //---------------------------------------------------------------------
-        Card *createCard(const char *cardName);
-        //---------------------------------------------------------------------
-        /// @brief カード効果の追加
-        /// @param cardEffect カード効果
-        //---------------------------------------------------------------------
-        void addCardMaster(CardMaster *cardMaster);
+        std::string toString(void) const;
     private:
-        CardFactory(void);
-        ~CardFactory(void);
-        std::map <std::string, CardMaster *> mMasters;
+        int mValue;
     };
 }
 #endif
